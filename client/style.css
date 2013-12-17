@@ -30,12 +30,11 @@ body {
 .column.central {
   width: 80%;
   position: absolute;
-  left: 50%;
-  margin-left: -40%;
+  left: 10%;
 }
 
 input {
-  width: 180px;
+  width: 250px;
   font-size: 20px;
   color: #822;
   font-family: cursive;
@@ -49,6 +48,12 @@ input {
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+.long-list {
+  -webkit-columns: 2;
+  -mox-columns: 2;
+  columns: 2;
 }
 
 h1 {
@@ -69,7 +74,8 @@ h1 {
 
 .dining-group {
   float: left;
-  width: 33.33%;
+  margin: 0 auto;
+  width: 200px;
   height: 250px;
   font-size: 18px
 }

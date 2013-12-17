@@ -15,14 +15,14 @@
     <div class='column side'>
       <h1 ng-click='selectAll()'>High Society:</h1>
       ➳ <input autofocus='autofocus' type='text' ng-enter='select()' ng-model='search'/>
-      <ul>
+      <ul class='long-list'>
         <li class='student animate-repeat' ng-repeat='student in students | filter:{selected:false} | filter:search | orderBy:"name"' ng-click='select(student)'>{{student.name}}</li>
       </ul>
     </div>
     <div class='column side'>
       <h1 ng-click='unselectAll()'>Invited Guests:</h1>
       <button ng-click='match()'>Invite</button>
-      <ul>
+      <ul class='long-list'>
         <li class='student animate-repeat' ng-repeat='student in students | filter:{selected:true} | orderBy:"name"' ng-click='unselect(student)' ng-class='student.class'>{{student.name}}</li>
       </ul>
     </div>

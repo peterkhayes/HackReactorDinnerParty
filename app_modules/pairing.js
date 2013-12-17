@@ -1,3 +1,29 @@
+/*
+  In this module, we're going to keep track of who has eaten with who.
+
+  Modeling the situation as a graph problem, we will attempt to match
+  students with students they have not eaten with before.
+
+  The algorithm as follows:
+  First, we determine batch sizes.  For a total number of students, we
+  want most to eat in groups of 4.  However, this is not always
+  possible without some students eating alone.  So we make the minimum
+  number of groups of 3.  This is done with a little modular arithmetic.
+
+  Then, to make a batch, we first pick someone at random.  We then pick
+  the person who he/she has eaten with least.  Then we pick the third person
+  for whom the sum of the times they have eaten with person 1 and the times
+  they have eaten with person 2 is minimized.  A fourth person is picked
+  similarly, if required.
+
+  Finally, we run step 2 another 49 times and pick the result with the least
+  total number of repeated pairings.
+
+  This seems to minimize the number of repeated meals very well.  With a
+  size of 55 people, it takes 4-5 meals before any repeats occur.
+*/
+
+
 var directory = require ('./directory');
 
 var nameList = directory.getNameList();
@@ -17,6 +43,7 @@ for (var i = 0; i < nameList.length; i++) {
 }
 
 // User 1 and user 2 are going to eat together.
+// Let's remember that for later.
 var pair = function(user1, user2) {
   pairings[user1][user2]++;
   pairings[user2][user1]++;
@@ -60,9 +87,8 @@ var findBestAddition = function(batch, possibilities) {
   return best;
 };
 
-module.exports.makeGroups = function(participants) {
-  // Set up batch sizes so everyone is in groups of 3 or 4.
-  var total = participants.length;
+// Partition a total number of participants into batches of 3 or 4.
+var makeBatches = function(total) {
   var batchSizes = [];
   if (total > 5) {
     var breakPoint = 0; // The number under which we need to switch to groups of 3.
@@ -84,9 +110,16 @@ module.exports.makeGroups = function(participants) {
   } else { // If we have 5 or fewer people, put everyone in one group.
     batchSizes = [total];
   }
+  return batchSizes;
+};
+
+module.exports.makeGroups = function(participants) {
+  // Set up batch sizes so everyone is in groups of 3 or 4.
+  var total = participants.length;
+  var batchSizes = makeBatches(total);
 
   // We're going to run this algorithm 50 times and pick the best result.
-  // Because we can.  v8.
+  // Because we can.  #v8
   var bestGrouping;
   var leastTotalPastPairings = Infinity;
   for (var i = 0; i < 50; i++) {
@@ -133,7 +166,6 @@ module.exports.makeGroups = function(participants) {
     }
   }
 
-  console.log("Repeated pairings:", leastTotalPastPairings);
   // Make new pairings for each group.
   for (var k = 0; k < bestGrouping.length; k++) {
     makePairings(bestGrouping[k]);
