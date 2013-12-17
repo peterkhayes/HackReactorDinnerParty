@@ -36,15 +36,29 @@ exports.go = function(req, res) {
 
   var groups = [];
   var batch = [];
+  var fullRepeats = 0;
   while (participants.length) {
     var randIdx = ~~(Math.random()*participants.length);
     batch.push(participants.splice(randIdx, 1)[0]); // Put a random person in the batch.
-    if (batch.length === batchSizes[0]) { // Send off an email if we have a full batch.
-      batchSizes.shift();
-      email.mailTo(batch);
-      groups.push(batch);
+    if (batch.length === batchSizes[0]) { // If we have a full batch...
+      if (directory.getPairings(batch) >= 2 && participants.length > 5) {
+        participants = participants.concat(batch);
+      } else if (directory.getPairings(batch) >= 2 && participants.length < 5 && fullRepeats < 3){
+        participants = req.body;
+        groups = [];
+        batch = [];
+        fullRepeats++;
+      } else {
+        batchSizes.shift();
+        groups.push(batch);
+      }
       batch = [];
     }
+  }
+  for (var i = 0; i < groups.length; i++) {
+    var group = groups[i];
+    email.mailTo(group);
+    directory.makePairings(group);
   }
   res.send(JSON.stringify(groups));
 };
