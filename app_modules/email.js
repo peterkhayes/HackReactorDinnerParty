@@ -48,8 +48,8 @@ exports.mailTo = function(recipients) {
 
   var data = {
     recipients: recipients,
-    restaurants: suggestions.getRestaurants(3),
-    topics: suggestions.getTopics(3)
+    restaurants: suggestions.getRestaurants(2),
+    topics: suggestions.getTopics(2)
   };
   var template = fs.readFileSync(path.join(__dirname, "../templates/email.html"), {encoding:"utf8"});
   email.html = handlebars.compile(template)(data);

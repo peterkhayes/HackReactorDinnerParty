@@ -27,7 +27,8 @@ var topics = [
   "your past life before Hack Reactor",
   "the meaning of life",
   "trends in technology",
-  "why?",
+  "why there exists something, and not nothing",
+  "an alternate history where humans are six inches tall"
   "live music",
   "recursion",
   "which superhero would win in a fight",
