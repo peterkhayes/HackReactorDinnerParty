@@ -47,7 +47,6 @@ var topics = [
   "Dinner Roulette",
   "Marcus and his many past careers",
   "iOS vs Android",
-  "historical reenactments",
   "the most useless piece of knowledge you know",
   "some of your more intriguing classmates",
   "the geopolitical rise of China",
@@ -67,7 +66,7 @@ exports.getTopics = function(count) {
       count--;
     }
   }
-  return result;
+  return result.sort(function(a, b) {return a.length - b.length;});
 };
 
 exports.getRestaurants = function(count) {
@@ -81,5 +80,5 @@ exports.getRestaurants = function(count) {
       count--;
     }
   }
-  return result;
+  return result.sort(function(a, b) {return a.length - b.length;});
 };
