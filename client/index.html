@@ -13,17 +13,17 @@
   <div class='bg'></div>
   <div ng-hide='submitted'>
     <div class='column side'>
-      <h1 ng-click='selectAll()'>High Society:</h1>
+      <h1 class='clickable' ng-click='selectAll()'>High Society:</h1>
       ➳ <input autofocus='autofocus' type='text' ng-enter='select()' ng-model='search'/>
       <ul class='long-list'>
-        <li class='student animate-repeat' ng-repeat='student in students | filter:{selected:false} | filter:search | orderBy:"name"' ng-click='select(student)'>{{student.name}}</li>
+        <li class='student animate-repeat clickable' ng-repeat='student in students | filter:{selected:false} | filter:search | orderBy:"name"' ng-click='select(student)'>{{student.name}}</li>
       </ul>
     </div>
     <div class='column side'>
-      <h1 ng-click='unselectAll()'>Invited Guests:</h1>
-      <button ng-click='match()'>Invite</button>
+      <h1 class='clickable' ng-click='unselectAll()'>Invited Guests:</h1>
+      <button class='clickable' ng-click='match()'>Invite</button>
       <ul class='long-list'>
-        <li class='student animate-repeat' ng-repeat='student in students | filter:{selected:true} | orderBy:"name"' ng-click='unselect(student)' ng-class='student.class'>{{student.name}}</li>
+        <li class='student animate-repeat clickable' ng-repeat='student in students | filter:{selected:true} | orderBy:"name"' ng-click='unselect(student)' ng-class='student.class'>{{student.name}}</li>
       </ul>
     </div>
   </div>

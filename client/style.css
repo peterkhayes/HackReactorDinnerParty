@@ -56,13 +56,16 @@ ul {
   columns: 2;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 h1 {
   font-size: 40px;
   font-weight: normal;
 }
 
 .student {
-  cursor: pointer;
   font-size: 20px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -93,10 +96,9 @@ button {
   background-image: url('envelope.jpg');
   background-color: transparent;
   outline: none;
-  color: #822;
+  color: #333;
   font-family: cursive;
   font-size: 15px;
-  cursor: pointer;
   box-shadow: none;
   border: none;
   border-radius: 2px;
