@@ -7,6 +7,7 @@ var suggestions = require('./suggestions');
 var directory = require('./directory');
 var handlebars = require('handlebars');
 var fs = require('fs');
+var path = require('path');
 
 // create reusable transport method (opens pool of SMTP connections)
 var emailSender = nodemailer.createTransport("SMTP",{
@@ -50,7 +51,7 @@ exports.mailTo = function(recipients) {
     restaurants: suggestions.getRestaurants(3),
     topics: suggestions.getTopics(3)
   };
-  var template = fs.readFileSync("../templates/email.html", {encoding:"utf8"});
+  var template = fs.readFileSync(path.join(__dirname, "../templates/email.html"), {encoding:"utf8"});
   email.html = handlebars.compile(template)(data);
 
   send(email);
