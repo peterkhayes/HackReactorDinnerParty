@@ -31,8 +31,8 @@ var directory = {
 
 exports.getNameList = function() {
   var result = [];
-  for (var i = 0; i < directory.length; i++) {
-    result.push(directory[i].name);
+  for (var name in directory) {
+    result.push(name);
   }
   return result;
 };

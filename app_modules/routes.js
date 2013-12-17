@@ -6,7 +6,9 @@ exports.students = function(req, res) {
 };
 
 exports.go = function(req, res) {
-  var participants = req.body.participants;
+  var participants = req.body;
+
+  console.log("Participants:", participants);
 
   // Set up batch sizes so everyone is in groups of 3 or 4.
   var total = participants.length;
@@ -32,14 +34,17 @@ exports.go = function(req, res) {
     batchSizes = [total];
   }
 
+  var groups = [];
   var batch = [];
   while (participants.length) {
     var randIdx = ~~(Math.random()*participants.length);
-    batch.push(participants.splice(randIdx, 1)); // Put a random person in the batch.
+    batch.push(participants.splice(randIdx, 1)[0]); // Put a random person in the batch.
     if (batch.length === batchSizes[0]) { // Send off an email if we have a full batch.
       batchSizes.shift();
       email.mailTo(batch);
+      groups.push(batch);
       batch = [];
     }
   }
+  res.send(JSON.stringify(groups));
 };

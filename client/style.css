@@ -1,21 +1,108 @@
+body {
+  font-family: cursive;
+  color: #822;
+}
+
+.bg {
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: url('bg.png');
+  background-size: cover;
+  opacity: 0.1;
+}
+
 .column {
+  background-color: transparent;
+  text-align: center;
+}
+
+.column.side {
   float:left;
   width: 45%;
   padding: 0;
   margin: 2.5%;
 }
 
-li {
+.column.central {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  margin-left: -40%;
+}
+
+input {
+  width: 180px;
+  font-size: 20px;
+  color: #822;
+  font-family: cursive;
+  border: none;
+  border-bottom: 1px solid #822;
+  outline: none;
+  text-align: center;
+  margin: 0 20px;
+}
+
+ul {
   list-style-type: none;
+  padding: 0;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: normal;
+}
+
+.student {
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dining-group {
+  float: left;
+  height: 33.33%;
+  width: 250px;
+  font-size: 18px
+}
+
+.dining-group h4 {
+  font-weight: normal;
+  font-size: 24px;
+  margin: 0;
+}
+
+button {
+  width: 150px;
+  height: 55px;
+  padding-top: 15px;
+  background-image: url('envelope.jpg');
+  background-color: transparent;
+  outline: none;
+  color: #822;
+  font-family: cursive;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: none;
+  border: none;
+  border-radius: 2px;
 }
 
 .animate-repeat.ng-move,
 .animate-repeat.ng-enter,
 .animate-repeat.ng-leave {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
+  -webkit-transition:all linear 0.07s;
+  transition:all linear 0.07s;
 }
- 
+
 .animate-repeat.ng-leave.ng-leave-active,
 .animate-repeat.ng-move,
 .animate-repeat.ng-enter {

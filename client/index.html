@@ -10,18 +10,31 @@
   <title>Hack Reactor Presents - Dinner Roulette</title>
 </head>
 <body ng-controller='main'>
-  <div class='column'>
-    <h2>Search for students:</h2>
-    <input type='text' ng-enter='select()' ng-model='search'/>
-    <ul>
-      <li ng-repeat='student in students | filter:{selected:false} | filter:search | orderBy:"name"' ng-click='select(student)'>{{student.name}}</li>
-    </ul>
+  <div class='bg'></div>
+  <div ng-hide='submitted'>
+    <div class='column side'>
+      <h1>High Society:</h1>
+      ➳ <input autofocus='autofocus' type='text' ng-enter='select()' ng-model='search'/>
+      <ul>
+        <li class='student animate-repeat' ng-repeat='student in students | filter:{selected:false} | filter:search | orderBy:"name"' ng-click='select(student)'>{{student.name}}</li>
+      </ul>
+    </div>
+    <div class='column side'>
+      <h1>Invited Guests:</h1>
+      <ul>
+        <li class='student animate-repeat' ng-repeat='student in students | filter:{selected:true} | orderBy:"name"' ng-click='unselect(student)' ng-class='student.class'>{{student.name}}</li>
+      </ul>
+      <button ng-click='go()'>Invite</button>
+    </div>
   </div>
-  <div class='column'>
-    <h2>Selected Students:</h2>
-    <ul>
-      <li ng-repeat='student in students | filter:{selected:true} | orderBy:"name"' ng-click='unselect(student)' ng-class='student.class'>{{student.name}}</li>
-    </ul>
+  <div class='column central' ng-show='submitted'>
+    <h1>Tonight's Dining Groups:</h1>
+    <div class='dining-group' ng-repeat='group in groups'>
+      <h4>Group {{$index + 1}}:</h4>
+      <ul>
+        <li ng-repeat='person in group'>{{person}}</li>
+      </ul>
+    </div>
   </div>
 </body>
 </html>

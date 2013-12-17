@@ -26,6 +26,7 @@ var send = function(email) {
 
 
 exports.mailTo = function(recipients) {
+  console.log("Sending a group email to", recipients);
   if (!Array.isArray(recipients)) recipients = [recipients];
   var email = {};
 
@@ -37,7 +38,7 @@ exports.mailTo = function(recipients) {
   email.to = addresses.join(", ");
 
   // Subject.
-  email.subject = "Your Dinner Roulette group for " + ((new Date()).getMonth() + 1) + "/" + (new Date()).getDate() + ".";
+  email.subject = "Your Dinner Roulette group for " + ((new Date()).getMonth() + 1) + "/" + (new Date()).getDate();
 
   // Content
   email.message = "Good evening!\r\n\r\nYour dining group for tonight is:\r\n\r\n";
