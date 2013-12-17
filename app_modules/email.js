@@ -44,24 +44,24 @@ exports.mailTo = function(recipients) {
   email.subject = "Your Dinner Roulette group for " + ((new Date()).getMonth() + 1) + "/" + (new Date()).getDate();
 
   // Content
-  email.message = "Good evening!\r\n\r\nYour dining group for tonight is:\r\n\r\n";
+  email.text = "Good evening!\r\n\r\nYour dining group for tonight is:\r\n\r\n";
 
   var companions = "";
   for (var i = 0; i < recipients.length; i++) {
     companions += (recipients[i] + "\r\n");
   }
-  email.message += companions;
+  email.text += companions;
 
-  email.message += "\r\nYou might consider dining at one of the following fine establishments:\r\n\r\n";
+  email.text += "\r\nYou might consider dining at one of the following fine establishments:\r\n\r\n";
   var restaurants = suggestions.getRestaurants(3);
   for (var i = 0; i < restaurants.length; i++) {
-    email.message += (restaurants[i] + "\r\n");
+    email.text += (restaurants[i] + "\r\n");
   }
 
   var topics = suggestions.getTopics(2);
-  email.message += "\r\nPerhaps you could discuss " + topics[0] + ", or " + topics[1] + ".\r\n\r\n";
+  email.text += "\r\nPerhaps you could discuss " + topics[0] + ", or " + topics[1] + ".\r\n\r\n";
 
-  email.message +="Sincerely,\r\nAlastair J.S., Your Butler";
+  email.text +="Sincerely,\r\nAlastair J.S., Your Butler";
 
   send(email);
 };
