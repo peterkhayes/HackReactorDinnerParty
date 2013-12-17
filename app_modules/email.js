@@ -13,7 +13,7 @@ var emailSender = nodemailer.createTransport("SMTP",{
 });
 
 var send = function(email) {
-  console.log("Sending the following email:", email);
+  // console.log("Sending the following email:", email);
   // email.from = email.from || "Dinner Roulette <"+process.env.GMAIL_USERNAME+"@gmail.com>";
   // emailSender.sendMail(email, function(error, response){
   //   if(error){
@@ -26,7 +26,7 @@ var send = function(email) {
 
 
 exports.mailTo = function(recipients) {
-  console.log("Sending a group email to", recipients);
+  // console.log("Sending a group email to", recipients);
   if (!Array.isArray(recipients)) recipients = [recipients];
   var email = {};
 

@@ -29,48 +29,12 @@ var directory = {
   'Patrick Stanger':'pstanger@gmail.com'
 };
 
-var pairings = {};
-for (var user in directory) {
-  pairings[user] = {};
-}
-
 exports.getNameList = function() {
   var result = [];
   for (var name in directory) {
     result.push(name);
   }
   return result;
-};
-
-var pair = function(user1, user2) {
-  if (pairings[user1][user2]) {
-    pairings[user1][user2]++;
-  } else {
-    pairings[user1][user2] = 1;
-  }
-  if (pairings[user2][user1]) {
-    pairings[user2][user1]++;
-  } else {
-    pairings[user2][user1] = 1;
-  }
-};
-
-exports.makePairings = function(users) {
-  for (var i = 0; i < users.length; i++) {
-    for (var j = i+1; j < users.length; j++) {
-      pair(users[i], users[j]);
-    }
-  }
-};
-
-exports.getPairings = function(users) {
-  var count = 0;
-  for (var i = 0; i < users.length; i++) {
-    for (var j = i+1; j < users.length; j++) {
-      count += pairings[users[i]][users[j]];
-    }
-  }
-  return count;
 };
 
 exports.getEmail = function(name) {

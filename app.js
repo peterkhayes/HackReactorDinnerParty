@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '/client')));
 app.use(express.bodyParser());
 
 app.get('/students', routes.students);
-app.post('/go', routes.go);
+app.post('/match', routes.match);
 
 
 // Start server

@@ -35,13 +35,25 @@ var app = angular.module('dinnerRoulette', ['ngAnimate'])
     $scope.search = "";
   };
 
+  $scope.selectAll = function() {
+    for (var i = 0; i < $scope.students.length; i++) {
+      $scope.students[i].selected = true;
+    }
+  };
+
   $scope.unselect = function(student) {
     if (student) {
       student.selected = false;
     }
   };
 
-  $scope.go = function() {
+  $scope.unselectAll = function() {
+    for (var i = 0; i < $scope.students.length; i++) {
+      $scope.students[i].selected = false;
+    }
+  };
+
+  $scope.match = function() {
     var nameList = [];
     for (var i = 0; i < $scope.students.length; i++) {
       if ($scope.students[i].selected) {
@@ -50,7 +62,7 @@ var app = angular.module('dinnerRoulette', ['ngAnimate'])
     }
     $http({
       method: 'post',
-      url: '/go',
+      url: '/match',
       data: nameList
     }).success(function(groups) {
       $scope.groups = groups;
