@@ -1,4 +1,5 @@
 var app = angular.module('dinnerRoulette', ['ngAnimate'])
+// Similar to ngClick.
 .directive('ngEnter', function() {
   return function(scope, element, attrs) {
     element.bind("keydown keypress", function(event) {
@@ -13,6 +14,7 @@ var app = angular.module('dinnerRoulette', ['ngAnimate'])
 })
 .controller('main', function($scope, $filter, $http) {
 
+  // Get a list of all students on init.
   $http.get('/students')
   .success(function(data) {
     $scope.students = [];
@@ -22,6 +24,9 @@ var app = angular.module('dinnerRoulette', ['ngAnimate'])
   })
   .error(function(err){console.log(err);});
 
+  // Pick a student if passed one.
+  // Otherwise, if only one student passes the current search filter,
+  // pick him or her.
   $scope.select = function(student) {
     if (student) {
       student.selected = true;
@@ -53,6 +58,7 @@ var app = angular.module('dinnerRoulette', ['ngAnimate'])
     }
   };
 
+  // Send a post request to the server to match students together
   $scope.match = function() {
     var nameList = [];
     for (var i = 0; i < $scope.students.length; i++) {
