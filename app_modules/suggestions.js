@@ -28,11 +28,13 @@ var topics = [
   "the meaning of life",
   "trends in technology",
   "why there exists something, and not nothing",
-  "an alternate history where humans are six inches tall"
+  "an alternate history where humans are six inches tall",
   "live music",
   "recursion",
-  "which superhero would win in a fight",
+  "which of several superheros would win in a fight",
   "your favorite travel destinations",
+  "semantic whitespace",
+  "the best breeds of dogs",
   "drones",
   "Tinder",
   "a post-scarcity society",
@@ -47,7 +49,11 @@ var topics = [
   "iOS vs Android",
   "historical reenactments",
   "the most useless piece of knowledge you know",
-  "some of your more intriguing classmates"
+  "some of your more intriguing classmates",
+  "the geopolitical rise of China",
+  "asteroid mining",
+  "wingsuit-assisted BASE jumping",
+  "the Wu-Tang Clan"
 ];
 
 exports.getTopics = function(count) {
