@@ -50,12 +50,6 @@ ul {
   padding: 0;
 }
 
-.long-list {
-  -webkit-columns: 2;
-  -mox-columns: 2;
-  columns: 2;
-}
-
 .clickable {
   cursor: pointer;
 }
