@@ -1,0 +1,38 @@
+<!-- email.html -->
+<html>
+<head>
+  <title>Your dinner party for {{month}}/{{day}}</title>
+</head>
+<body>
+  <p>
+    Good evening,
+  </p>
+  <p>
+    Your dinner group for tonight is:
+  </p>
+  <ul>
+    {{#each recipients}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  <p>
+    You might consider dining at one of the following fine establishments:
+  </p>
+    <ul>
+    {{#each restaurants}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
+  <p>
+    Perhaps you and your companions could discuss {{topics.1}}, or {{topics.2}}.  Please keep things civil, though.
+  </p>
+  <br />
+  <p>
+    Always at your service,
+    <br />
+    Alastair J.S.
+    <br />
+    Your Butler
+  </p>
+</body>
+</html>
